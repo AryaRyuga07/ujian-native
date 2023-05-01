@@ -133,7 +133,7 @@ require '../../model/db.php';
 																	<?php } ?>
 																</select>
 																<input type="hidden" name="id" value="<?= $dsl->id ?>">
-																<input type="text" name="soal" placeholder="Soal" value="<?= $dsl->soal ?>" autocomplete="off">
+																<textarea name="soal" cols="30" placeholder="Soal" style="resize: none; padding-bottom: 50px;"><?= $dsl->soal ?></textarea>
 																<input type="text" name="a" placeholder="Jawaban A" value="<?= $dsl->a ?>" autocomplete="off">
 																<input type="text" name="b" placeholder="Jawaban B" value="<?= $dsl->b ?>" autocomplete="off">
 																<input type="text" name="c" placeholder="Jawaban C" value="<?= $dsl->c ?>" autocomplete="off">

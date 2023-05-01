@@ -99,10 +99,10 @@
 															<?php 
 																$id = $_GET['id'];
 																$mp_sl = mysqli_query($conn, "SELECT * FROM tb_mapel WHERE id_mapel = '$id'");
-																$sw = mysqli_fetch_object($mp_sl);															 
+																$mp = mysqli_fetch_object($mp_sl);															 
 															?>
-															<input type="hidden" name="id" value="<?= $m->id_mapel ?>">
-															<input type="text" name="mapel" placeholder="Nama Mapel" autocomplete="off" value="<?= $m->nama_mapel ?>">
+															<input type="hidden" name="id" value="<?= $mp->id_mapel ?>">
+															<input type="text" name="mapel" placeholder="Nama Mapel" autocomplete="off" value="<?= $mp->nama_mapel ?>">
 															<button name="edit">Save</button>
 														</form>
 														<form action="mapel.php" method="post" class="cancel-form">
@@ -127,7 +127,7 @@
 													<h2>Apakah anda ingin menghapus data ini?</h2>
 													<div class="form">
 														<form action="func/hapus-mapel.php" method="post" class="input-form">
-															<input type="hidden" name="id" value="<?= $m->id_mapel ?>">
+															<input type="hidden" name="id" value="<?= $mp->id_mapel ?>">
 															<button name="del">Delete</button>
 														</form>
 														<form action="mapel.php" method="post" class="cancel-form">

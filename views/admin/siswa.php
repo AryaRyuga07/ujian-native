@@ -103,9 +103,9 @@
 																$sw_sl = mysqli_query($conn, "SELECT * FROM tb_siswa WHERE id_siswa = '$id'");
 																$sw = mysqli_fetch_object($sw_sl);															 
 															?>
-															<input type="hidden" name="id" value="<?= $s->id_siswa ?>">
-															<input type="text" name="nisn" placeholder="NISN" autocomplete="off" value="<?= $s->nisn ?>">
-															<input type="text" name="siswa" placeholder="Nama Siswa" autocomplete="off" value="<?= $s->nama_siswa ?>">
+															<input type="hidden" name="id" value="<?= $sw->id_siswa ?>">
+															<input type="text" name="nisn" placeholder="NISN" autocomplete="off" value="<?= $sw->nisn ?>">
+															<input type="text" name="siswa" placeholder="Nama Siswa" autocomplete="off" value="<?= $sw->nama_siswa ?>">
 															<select name="kelas" required>
 																<option value="">--pilih kelas--</option>
 																	<?php 

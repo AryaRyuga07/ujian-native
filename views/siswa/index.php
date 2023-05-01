@@ -58,7 +58,6 @@ require '../../model/db.php';
 				<h3>Peraturan selama ujian berlangsung</h3>
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat earum incidunt consequatur blanditiis rem et animi impedit odit. Molestiae dolor sit nemo nisi eligendi sapiente cumque dolorem, iste explicabo eveniet.</p>
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium eveniet voluptas in quibusdam nisi provident dignissimos molestiae doloribus sit? Ratione?</p>
-				<a href="#" class="btn">learn more</a>
 			</div>
 		</div>
 	</section>

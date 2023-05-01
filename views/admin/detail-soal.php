@@ -142,6 +142,9 @@ require '../../model/db.php';
 																<input type="text" name="b" placeholder="Jawaban B" value="<?= $dsl->b ?>" autocomplete="off">
 																<input type="text" name="c" placeholder="Jawaban C" value="<?= $dsl->c ?>" autocomplete="off">
 																<input type="text" name="d" placeholder="Jawaban D" value="<?= $dsl->d ?>" autocomplete="off">
+																<form action="your_upload_script.php" method="post" enctype="multipart/form-data">
+                                                                <input type="file" name="uploaded_file">
+										                        <select name="jawaban" required>
 																<select name="jawaban" required>
 																	<option value="">--pilih jawaban--</option>
 																	<option value="A" <?= ($dsl->jawaban == 'A') ? 'selected' : ''; ?>>A</option>
@@ -240,6 +243,8 @@ require '../../model/db.php';
 										<input type="text" name="b" placeholder="Jawaban B" autocomplete="off">
 										<input type="text" name="c" placeholder="Jawaban C" autocomplete="off">
 										<input type="text" name="d" placeholder="Jawaban D" autocomplete="off">
+										<form action="your_upload_script.php" method="post" enctype="multipart/form-data">
+                                        <input type="file" name="uploaded_file">
 										<select name="jawaban" required>
 											<option value="">--pilih jawaban--</option>
 											<option value="A">A</option>

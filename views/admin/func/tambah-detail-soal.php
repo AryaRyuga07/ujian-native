@@ -23,17 +23,25 @@ function tambah($data){
 }
 
 if (isset($_POST["save"])) {
-	if (tambah($_POST) > 0) {
-		echo "<script>
-			alert('Soal berhasil ditambahkan');
-			document.location.href = '../detail-soal.php';
-		</script>";
-	} else {
-		"<script>
-			alert('Soal gagal ditambahkan');
-			document.location.href = '../detail-soal.php#tambah';
-		</script>";
-	}
+    if (isset($_FILES['uploaded_file'])) {
+        $file_name = $_FILES['uploaded_file']['name'];
+        $file_size = $_FILES['uploaded_file']['size'];
+        $file_tmp = $_FILES['uploaded_file']['tmp_name'];
+        $file_type = $_FILES['uploaded_file']['type'];
+
+    }
+
+    if (tambah($_POST) > 0) {
+        echo "<script>
+            alert('Soal berhasil ditambahkan');
+            document.location.href = '../detail-soal.php';
+        </script>";
+    } else {
+        echo "<script>
+            alert('Soal gagal ditambahkan');
+            document.location.href = '../detail-soal.php#tambah';
+        </script>";
+    }
 }
 
  ?>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../../../model/db.php';
 $username = $_POST["user"];
 $password = $_POST["pass"];
@@ -9,11 +10,11 @@ $login = mysqli_fetch_object($result);
 if (isset($_POST["log"])) {
 	if ($cek === 1) {
 		if ($login->level == 'admin') {
-			$_SESSION["login"] = true;
+			$_SESSION["status_login"] = true;
 			header("Location: ../../admin/index.php");
 			exit;
 		} else if ($login->level == 'siswa') {
-			$_SESSION["login"] = true;
+			$_SESSION["status_login"] = true;
 			header("Location: ../../siswa/index.php");
 			exit;
 		}

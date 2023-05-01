@@ -1,4 +1,8 @@
 <?php
+session_start();
+if($_SESSION["status_login"] !== true) {
+	echo '<script>window.location="../login/login.php"</script>';
+}
 require '../../model/db.php';
 ?>
 
@@ -29,7 +33,7 @@ require '../../model/db.php';
 
 		<div class="icons">
 			<div class="fas fa-search" id="search-btn"></div>
-			<a href="../login/login.php"><span class="material-symbols-sharp logout" id="logout-btn">logout</span></a>
+			<a href="../login/func/logout.php"><span class="material-symbols-sharp logout" id="logout-btn">logout</span></a>
 			<div class="fas fa-bars" id="menu-btn"></div>
 		</div>
 

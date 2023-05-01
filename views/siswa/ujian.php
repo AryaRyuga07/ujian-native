@@ -1,4 +1,8 @@
 <?php
+session_start();
+if($_SESSION["status_login"] !== true) {
+	echo '<script>window.location="../login/login.php"</script>';
+}
 require '../../model/db.php';
 
 $jumlahDataPerHalaman = 5;

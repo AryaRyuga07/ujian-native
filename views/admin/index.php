@@ -1,4 +1,8 @@
 <?php 
+session_start();
+if($_SESSION["status_login"] !== true) {
+	echo '<script>window.location="../login/login.php"</script>';
+}
 require '../../model/db.php';
 $data = mysqli_query($conn, "SELECT (SELECT COUNT(*) FROM tb_guru) AS jml_guru,
         					(SELECT COUNT(*) FROM tb_mapel) AS jml_mapel,

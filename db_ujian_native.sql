@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Mar 2023 pada 03.42
+-- Waktu pembuatan: 01 Bulan Mei 2023 pada 14.38
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.6
 
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `tb_detail_soal` (
+  `id` int(11) NOT NULL,
   `id_soal` int(11) NOT NULL,
-  `no` int(11) NOT NULL,
   `soal` text NOT NULL,
   `a` varchar(255) NOT NULL,
   `b` varchar(255) NOT NULL,
@@ -42,8 +42,14 @@ CREATE TABLE `tb_detail_soal` (
 -- Dumping data untuk tabel `tb_detail_soal`
 --
 
-INSERT INTO `tb_detail_soal` (`id_soal`, `no`, `soal`, `a`, `b`, `c`, `d`, `jawaban`) VALUES
-(1, 2, '3', '3', '3', '3', '3', 'A');
+INSERT INTO `tb_detail_soal` (`id`, `id_soal`, `soal`, `a`, `b`, `c`, `d`, `jawaban`) VALUES
+(1, 1, 'Berapakah jumlah 2 + 2', '3', '3', '3', '4', 'D'),
+(2, 1, 'Berapakah hasil 5 + 5', '2', '3', '4', '10', 'D'),
+(3, 1, 'Berapakah hasil 21 : 3', '6', '7', '8', '9', 'B'),
+(4, 1, 'Berapakah 10 : 5', '1', '2', '3', '4', 'B'),
+(5, 1, 'Berapakah hasil 6 + 7 ', '12', '14', '13', '17', 'C'),
+(6, 1, 'Berapakah hasil 2 + 3', '2', '3', '4', '5', 'D'),
+(7, 2, 'Nama android versi 7.0 adalah', 'Nougat', 'Lolipop', 'Kitkat', 'Oreo', 'A');
 
 -- --------------------------------------------------------
 
@@ -64,7 +70,7 @@ CREATE TABLE `tb_guru` (
 INSERT INTO `tb_guru` (`id_guru`, `id_mapel`, `nama_guru`) VALUES
 (1, 1, 'Sugiono Rahmat'),
 (2, 3, 'Asep Gunawan'),
-(7, 2, 'Rahmat Sugianto');
+(7, 7, 'Rahmat Sugianto');
 
 -- --------------------------------------------------------
 
@@ -166,9 +172,9 @@ CREATE TABLE `tb_mapel` (
 --
 
 INSERT INTO `tb_mapel` (`id_mapel`, `nama_mapel`) VALUES
-(1, 'Bahasa Indonesia'),
-(2, 'Bahasa Inggris'),
-(3, 'Android');
+(1, 'Matematika'),
+(3, 'Android'),
+(7, 'Bahasa Inggris');
 
 -- --------------------------------------------------------
 
@@ -188,9 +194,9 @@ CREATE TABLE `tb_siswa` (
 --
 
 INSERT INTO `tb_siswa` (`id_siswa`, `nisn`, `nama_siswa`, `id_kelas`) VALUES
-(1, 124123128, 'Ahmad Septiawan', 1),
+(1, 124123128, 'Ahmad Septiawana', 1),
 (2, 152181123, 'Joni Rahmat', 2),
-(4, 152181129, 'Danang Harto', 2);
+(4, 152181129, 'Danang Harto', 3);
 
 -- --------------------------------------------------------
 
@@ -202,13 +208,18 @@ CREATE TABLE `tb_ujian` (
   `id_ujian` int(11) NOT NULL,
   `id_soal` int(11) NOT NULL,
   `id_jurusan` int(11) NOT NULL,
-  `waktu` time NOT NULL,
-  `tanggal` date NOT NULL
+  `waktu` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `tb_detail_soal`
+--
+ALTER TABLE `tb_detail_soal`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `tb_guru`
@@ -263,6 +274,12 @@ ALTER TABLE `tb_ujian`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `tb_detail_soal`
+--
+ALTER TABLE `tb_detail_soal`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT untuk tabel `tb_guru`
 --
 ALTER TABLE `tb_guru`
@@ -272,7 +289,7 @@ ALTER TABLE `tb_guru`
 -- AUTO_INCREMENT untuk tabel `tb_jurusan`
 --
 ALTER TABLE `tb_jurusan`
-  MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_kelas`
@@ -290,7 +307,7 @@ ALTER TABLE `tb_login`
 -- AUTO_INCREMENT untuk tabel `tb_mapel`
 --
 ALTER TABLE `tb_mapel`
-  MODIFY `id_mapel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_mapel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_siswa`

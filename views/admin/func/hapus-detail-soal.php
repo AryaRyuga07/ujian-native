@@ -5,7 +5,7 @@ error_reporting(0);
 function hapus($id)
 {
 	global $conn;
-	mysqli_query($conn, "DELETE FROM tb_detail_soal WHERE id_soal = $id");
+	mysqli_query($conn, "DELETE FROM tb_detail_soal WHERE id = $id");
 	return mysqli_affected_rows($conn);
 }
 

@@ -15,7 +15,7 @@ function tambah($data){
 
 	$query = "INSERT INTO tb_detail_soal
 			VALUES 
-			('$id_soal','$soal','$a','$b','$c','$d','$jawaban')
+			('','$id_soal','$soal','$a','$b','$c','$d','$jawaban')
 			";
 	mysqli_query($conn, "$query");
 

@@ -5,7 +5,7 @@ function ubah($data)
 {
 	global $conn;
 
-	$id = htmlspecialchars($data["id_soal"]);
+	$id = $data["id"];
 	$id_soal =  htmlspecialchars($data["id_soal"]);
 	$soal =  htmlspecialchars($data["soal"]);
 	$a =  htmlspecialchars($data["a"]);
@@ -22,7 +22,7 @@ function ubah($data)
 		c = '$c',
 		d = '$d',
 		jawaban = '$jawaban'
-		WHERE id_soal = '$id_soal' AND id = '$id'
+		WHERE id = '$id'
 		";
 	mysqli_query($conn, "$query");
 	return mysqli_affected_rows($conn);
@@ -39,7 +39,7 @@ if (isset($_POST["edit"])) {
 } else {
 		echo "<script>
 		alert('Soal gagal diubah');
-		document.location.href = '../detail-soal.php#edit';
+		document.location.href = '../detail-soal.php';
 		</script>";
 	}
 }

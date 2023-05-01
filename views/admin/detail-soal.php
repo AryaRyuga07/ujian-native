@@ -1,3 +1,6 @@
+<?php 
+require '../../model/db.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -71,10 +74,10 @@
 				<h2>Daftar Detail Soal</h2>
 				<form action="" method="post">
 					<select name="soal" id="soal" style="margin: 10px 0; border: 1px solid black; border-radius: 10px; padding: 3px 10px;">
-						<option value="">--pilih soal--</option>
+						<option>--pilih soal--</option>
 						<?php
-						$soal = mysqli_query($conn, "SELECT * FROM tb_headsoal ORDER BY id_soal DESC");
-						while ($s = mysqli_fetch_object($soal)) {
+						$soal = mysqli_query($conn, "SELECT * FROM tb_headsoal");
+						while($s = mysqli_fetch_object($soal)) {
 						?>
 							<option value="<?= $s->id_soal ?>"><?= $s->id_soal ?></option>
 						<?php } ?>
@@ -91,10 +94,14 @@
 					</thead>
 					<tbody>
 						<?php
-						require '../../model/db.php';
+						
 						// error_reporting(0);
-						$idSoal = $_POST['soal'];
-						$dsoal = mysqli_query($conn, "SELECT * FROM tb_detail_soal WHERE id_soal = '" . $idSoal . "' ORDER BY id_soal DESC");
+						if($_POST != NULL){
+							$idSoal = $_POST['soal'];
+							$dsoal = mysqli_query($conn, "SELECT * FROM tb_detail_soal WHERE id_soal = '" . $idSoal . "' ORDER BY id_soal DESC");
+						} else {
+							$dsoal = mysqli_query($conn, "SELECT * FROM tb_detail_soal ORDER BY id_soal DESC");
+						}
 						if (mysqli_num_rows($dsoal) > 0) {
 							while ($ds = mysqli_fetch_object($dsoal)) {
 						?>
@@ -102,7 +109,7 @@
 									<td><?= $ds->id_soal ?></td>
 									<td><?= $ds->soal ?></td>
 									<td>
-										<a href="detail-soal.php?id=<?= $ds->id_soal ?>#edit" class="primary">Edit</a>
+										<a href="detail-soal.php?id=<?= $ds->id ?>#edit" class="primary">Edit</a>
 										<div class="overlay" id="edit">
 											<a href="detail-soal.php" class="close"><span class="material-symbols-sharp">close</span></a>
 											<div class="add-card">
@@ -113,10 +120,10 @@
 															<form action="func/ubah-detail-soal.php" method="post" class="input-form">
 																<?php
 																$id = $_GET['id'];
-																$ds_sl = mysqli_query($conn, "SELECT * FROM tb_detail_soal WHERE id_soal = '$id'");
+																$ds_sl = mysqli_query($conn, "SELECT * FROM tb_detail_soal WHERE id = '$id'");
 																$dsl = mysqli_fetch_object($ds_sl);
 																?>
-																<select name="soal" required>
+																<select name="id_soal" required>
 																	<option value="">--pilih soal--</option>
 																	<?php
 																	$soal = mysqli_query($conn, "SELECT * FROM tb_headsoal ORDER BY id_soal DESC");
@@ -125,7 +132,7 @@
 																		<option value="<?= $s->id_soal ?>" <?= ($dsl->id_soal == $s->id_soal) ? 'selected' : ''; ?>><?= $s->id_soal ?></option>
 																	<?php } ?>
 																</select>
-																<input type="text" name="no" placeholder="No" value="<?= $dsl->no ?>" autocomplete="off">
+																<input type="hidden" name="id" value="<?= $dsl->id ?>">
 																<input type="text" name="soal" placeholder="Soal" value="<?= $dsl->soal ?>" autocomplete="off">
 																<input type="text" name="a" placeholder="Jawaban A" value="<?= $dsl->a ?>" autocomplete="off">
 																<input type="text" name="b" placeholder="Jawaban B" value="<?= $dsl->b ?>" autocomplete="off">
@@ -151,7 +158,7 @@
 										</div>
 									</td>
 									<td>
-										<a href="detail-soal.php?id=<?= $ds->id_soal ?>#del" class="danger">
+										<a href="detail-soal.php?id=<?= $ds->id ?>#del" class="danger">
 											Delete
 										</a>
 										<div class="overlay" id="del">
@@ -164,11 +171,10 @@
 															<form action="func/hapus-detail-soal.php" method="post" class="input-form">
 																<?php
 																$id = $_GET['id'];
-																$ds_sl = mysqli_query($conn, "SELECT * FROM tb_detail_soal WHERE id_soal = '$id'");
+																$ds_sl = mysqli_query($conn, "SELECT * FROM tb_detail_soal WHERE id = '$id'");
 																$dsl = mysqli_fetch_object($ds_sl);
 																?>
-																<input type="hidden" name="id_soal" value="<?= $dsl->id_soal ?>">
-																<input type="hidden" name="no" value="<?= $dsl->no ?>">
+																<input type="hidden" name="id" value="<?= $dsl->id ?>">
 																<button name="del">Delete</button>
 															</form>
 															<form action="detail-soal.php" method="post" class="cancel-form">
@@ -224,14 +230,8 @@
 										</select>
 										<?php
 										// error_reporting(0);
-										$nod = mysqli_query($conn, "SELECT no FROM tb_detail_soal WHERE id_soal = '1' ORDER BY no DESC");
-										$n = mysqli_fetch_object($nod);
-										for ($i = 1; $i < $n->no; $i++) {
-											$no = $i;
-										}
 										?>
-										<input type="text" name="no" placeholder="No" autocomplete="off" value="<?= $no ?>" readonly>
-										<textarea name="soal" cols="30" placeholder="Soal" style="resize: none;"></textarea>
+										<textarea name="soal" cols="30" placeholder="Soal" style="resize: none; padding-bottom: 50px;"></textarea>
 										<input type="text" name="a" placeholder="Jawaban A" autocomplete="off">
 										<input type="text" name="b" placeholder="Jawaban B" autocomplete="off">
 										<input type="text" name="c" placeholder="Jawaban C" autocomplete="off">

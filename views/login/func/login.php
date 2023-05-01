@@ -12,10 +12,6 @@ if (isset($_POST["log"])) {
 			$_SESSION["login"] = true;
 			header("Location: ../../admin/index.php");
 			exit;
-		} else if ($login->level == 'guru') {
-			$_SESSION["login"] = true;
-			header("Location: ../../guru/index.php");
-			exit;
 		} else if ($login->level == 'siswa') {
 			$_SESSION["login"] = true;
 			header("Location: ../../siswa/index.php");

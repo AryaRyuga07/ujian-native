@@ -256,14 +256,6 @@ section {
 	text-decoration: line-through;
 }
 
-.menu .box-container .box:hover {
-	background: #fff;
-}
-
-.menu .box-container .box:hover > * {
-	color: var(--black);
-}
-
 .products .box-container {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
